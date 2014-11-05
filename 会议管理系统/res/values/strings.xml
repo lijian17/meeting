@@ -4,5 +4,33 @@
     <string name="app_name">会议管理系统</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
+    <string name="send_mess">登    陆</string>
+    <string name="username">用户名</string>
+    <string name="username_hint_mess">请输入用户名</string>
+    <string name="password">密码</string>
+    <string name="pass_hint_mess">请输入密码</string>
+    <string name="meet_detail">会议详情</string>
+    <string name="display_grid_view_info">会议列表查询</string>
+    <string name="display_update_button">更新数据</string>
+    <string name="save_logininfo">保存用户名和密码</string>
+    <string name="AutoLogin">开机自动运行并登陆</string>
+    <string name="file_about">相关文件：</string>
+    <string name="button">开始下载</string>
+    <string name="path">""</string>
+    <string name="sdcardnoexist">sd卡不存在</string>
+    <string name="fail">下载失败</string>
+    <string name="finish">下载完成</string>
+    <string name="loadprogress">下载进度</string>
+
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+
+    <string name="cancel">取消</string>
+    <string name="update">更新</string>
+    <string name="exit">退出</string>
+    <string name="system_set">设置</string>
+    <string name="serverIP">服务器IP:</string>
+    <string name="serverPORT">端口PORT:</string>
+    <string name="fallback">后退</string>
 
 </resources>

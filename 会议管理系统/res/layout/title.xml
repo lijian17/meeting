@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:background="@drawable/background">
+
+	<LinearLayout
+		android:id="@+id/title_layout"
+		android:layout_width="fill_parent"
+		android:orientation="horizontal"
+		android:background="@drawable/home_head_bg"
+		android:gravity="center_vertical"
+		android:layout_height="50dp"
+		android:paddingBottom="2dp">
+
+		<Button
+			android:textColor="@color/white"
+			android:text="@string/exit"
+			android:background="@drawable/top_right_btn"
+			android:layout_height="wrap_content"
+			android:layout_width="wrap_content"
+			android:layout_marginLeft="15dp"
+			android:id="@+id/btn_left"></Button>
+		<TextView
+			android:layout_height="wrap_content"
+			android:layout_width="fill_parent"
+			android:textColor="@android:color/white"
+			android:layout_weight="2.0"
+			android:text="@string/display_grid_view_info"
+			android:textSize="20sp"
+			android:gravity="center_horizontal" android:id="@+id/title_text"></TextView>
+		<Button
+			android:background="@drawable/top_right_btn"
+			android:text="@string/update"
+			android:layout_height="wrap_content"
+			android:textColor="@color/white"
+
+			android:layout_width="wrap_content"
+			android:layout_marginRight="15dp" android:id="@+id/btn_right"></Button>
+	</LinearLayout>
+
+	<LinearLayout
+		android:id="@+id/frame_body"
+		android:layout_width="fill_parent"
+		android:orientation="vertical"
+		android:layout_height="fill_parent"></LinearLayout>
+</LinearLayout>

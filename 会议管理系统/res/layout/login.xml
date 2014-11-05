@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical"
+	android:background="@drawable/background2"
+	android:layout_marginLeft="5dp"
+	android:layout_marginRight="5dp"
+	android:layout_marginTop="3dp">
+	<EditText
+		android:id="@+id/username"
+		android:background="@drawable/edittext_style"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:hint="@string/username_hint_mess"
+		android:layout_marginLeft="20dp"
+		android:layout_marginRight="20dp"
+		android:paddingLeft="10dp"
+		android:singleLine="false"
+		android:textSize="16sp"
+		android:layout_marginTop="60dp" />
+	<EditText
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:hint="@string/pass_hint_mess"
+		android:paddingLeft="10dp"
+		android:layout_marginTop="20dp"
+		android:layout_marginLeft="20dp"
+		android:layout_marginRight="20dp"
+		android:background="@drawable/edittext_style"
+		android:inputType="textPassword"
+		android:textSize="16sp"
+		android:id="@+id/password" />
+
+	<Button
+		android:text="@string/send_mess"
+		android:layout_height="wrap_content"
+		android:maxLines="2"
+		android:background="@drawable/button_1"
+		android:onClick="sendMessage"
+		android:layout_gravity="center_horizontal"
+		android:layout_marginTop="20dp"
+		android:layout_width="fill_parent"
+		android:layout_marginLeft="20dp"
+		android:layout_marginRight="20dp"
+		android:textSize="18sp"
+		android:id="@+id/btn_login"></Button>
+
+	<!-- 选项框部分 -->
+	<LinearLayout
+		android:orientation="horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center_vertical"
+		android:paddingLeft="20dp"
+		android:layout_marginTop="20dp">
+		<CheckBox
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/checkbox_isSave"></CheckBox>
+		<TextView
+			android:textColor="@color/black"
+			android:layout_height="wrap_content"
+			android:text="@string/save_logininfo"
+			android:textSize="20dp"
+			android:layout_width="wrap_content"></TextView>
+	</LinearLayout>
+	<LinearLayout
+		android:orientation="horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="3dip"
+		android:gravity="center_vertical"
+		android:paddingLeft="20dp">
+		<CheckBox
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:id="@+id/checkbox_isAutoLogin"></CheckBox>
+		<TextView
+			android:textColor="@color/black"
+			android:layout_height="wrap_content"
+			android:text="@string/AutoLogin"
+			android:textSize="20dp"
+			android:layout_width="wrap_content"></TextView>
+	</LinearLayout>
+</LinearLayout>
