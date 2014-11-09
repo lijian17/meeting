@@ -27,7 +27,7 @@ public class MeetIdListXmlParser implements XmlParserListener{
 		}
 		if (name.equalsIgnoreCase("meetingid")) {
 			String nextText = Constants.getNextText(parser);
-			Constants.Logleo("nextText: "+nextText);
+			Constants.Loglj("nextText: "+nextText);
 			meetids.add(nextText);
 		}
 	}

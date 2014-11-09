@@ -10,7 +10,7 @@ import android.util.Log;
 
 /**
  * 常量类
- * @author leopold
+ * @author lijian
  *
  */
 public class Constants {
@@ -50,9 +50,9 @@ public class Constants {
 	public static SimpleDateFormat sdf = new SimpleDateFormat("MM月dd日  HH：mm");
 	
 	public static boolean isShow = true;
-	public static void Logleo(String str){
+	public static void Loglj(String str){
 		if(isShow){
-			Log.i("leo", "-->"+str);
+			Log.i("lj", "-->"+str);
 		}
 	}
 	

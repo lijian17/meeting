@@ -3,14 +3,14 @@ package net.dxs.meeting.receiver;
 import java.util.Date;
 import java.util.List;
 
-import net.dxs.meeting.MeetList;
+import net.dxs.meeting.MeetListActivity;
 import net.dxs.meeting.R;
 import net.dxs.meeting.net.meet.MeetBean;
 import net.dxs.meeting.net.meet.MeetRequest;
 import net.dxs.meeting.net.meetidlist.MeetIdListBean;
 import net.dxs.meeting.net.meetidlist.MeetIdListRequest;
 import net.dxs.meeting.net.netmodule.BaseResponse;
-import net.dxs.meeting.net_new.netmodle.NetClient;
+import net.dxs.meeting.net.netmodule.NetClient;
 import net.dxs.meeting.util.Constants;
 import net.dxs.meeting.util.MeetDbUtil;
 import android.app.Notification;
@@ -23,7 +23,7 @@ import android.content.Intent;
 /**
  * 收到广播以后，连接服务器，更新会议数据库
  * 
- * @author leopold
+ * @author lijian
  * 
  */
 public class ProcessAlarmReceiver extends BroadcastReceiver {
@@ -79,7 +79,7 @@ public class ProcessAlarmReceiver extends BroadcastReceiver {
 		
 		// step1:在本地查找最近一条会议信息的发布时间 //第一次是null
 		String localLastDate = dbUtil.getLastPublishDate();
-		Constants.Logleo("localLastDate:" + localLastDate);
+		Constants.Loglj("localLastDate:" + localLastDate);
 		if (localLastDate == null) {
 			localLastDate = "0";
 		}
@@ -107,7 +107,7 @@ public class ProcessAlarmReceiver extends BroadcastReceiver {
 		/*
 		 * 建立新的Intent，作为点选Notification留言条时， 会执行的Activity
 		 */
-		Intent notifyIntent = new Intent(context, MeetList.class);
+		Intent notifyIntent = new Intent(context, MeetListActivity.class);
 		notifyIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 		
 		/* 建立PendingIntent作为设定递延执行的Activity */

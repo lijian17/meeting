@@ -17,12 +17,13 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
+        android:name="net.dxs.meeting.app.NetMeetApp"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="net.dxs.meeting.Login"
+            android:name="net.dxs.meeting.LoginActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,7 +32,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MeetList"
+            android:name="net.dxs.meeting.MeetListActivity"
             android:label="@string/app_name"
             android:launchMode="singleTop" >
         </activity>
@@ -40,16 +41,16 @@
             android:label="@string/app_name" >
         </activity>
 
-        <service android:name=".service.SystemService" />
+        <service android:name="net.dxs.meeting.service.SystemService" />
 
-        <receiver android:name=".receiver.BootReceiver" >
+        <receiver android:name="net.dxs.meeting.receiver.BootReceiver" >
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>
         </receiver>
-        <receiver android:name=".receiver.ProcessAlarmReceiver" >
+        <receiver android:name="net.dxs.meeting.receiver.ProcessAlarmReceiver" >
             <intent-filter>
-                <action android:name="com.heima.action.PROCESS_ALARM" />
+                <action android:name="net.dxs.action.PROCESS_ALARM" />
             </intent-filter>
         </receiver>
 

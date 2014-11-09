@@ -82,7 +82,7 @@ public class DownloadThread extends Thread {
 			int statusCode = response.getStatusLine().getStatusCode();
 			if(DownloadTask.getDebug()){
 				for(Header header : response.getAllHeaders()){
-					Constants.Logleo(header.getName()+":"+header.getValue());
+					Constants.Loglj(header.getName()+":"+header.getValue());
 				}
 				//Constants.LogLeo("statusCode:" + statusCode);
 			}

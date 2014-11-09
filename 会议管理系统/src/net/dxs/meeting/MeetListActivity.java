@@ -7,8 +7,8 @@ import net.dxs.meeting.net.meet.MeetRequest;
 import net.dxs.meeting.net.meetidlist.MeetIdListBean;
 import net.dxs.meeting.net.meetidlist.MeetIdListRequest;
 import net.dxs.meeting.net.netmodule.BaseResponse;
+import net.dxs.meeting.net.netmodule.NetClient;
 import net.dxs.meeting.net.netmodule.ResponseListener;
-import net.dxs.meeting.net_new.netmodle.NetClient;
 import net.dxs.meeting.service.SystemService;
 import net.dxs.meeting.util.Constants;
 import android.content.Intent;
@@ -22,10 +22,11 @@ import android.widget.TextView;
 
 /**
  * 会议列表
- * @author leopold
- *
+ * 
+ * @author lijian
+ * 
  */
-public class MeetList extends BaseActivity {
+public class MeetListActivity extends BaseActivity {
 	private GridView gridView;
 	/**
 	 * 有新会议信息
@@ -39,13 +40,12 @@ public class MeetList extends BaseActivity {
 	 * 完成更新一条会议记录
 	 */
 	private final int UPDATE_ONE = 3;
-	
 
 	@Override
 	public View setBodyView() {
 		return inflater.inflate(R.layout.meetlist, null);
 	}
-	
+
 	@Override
 	public void dealTitle(Button btn_left, TextView title, Button btn_right) {
 		btn_left.setVisibility(View.INVISIBLE);
@@ -62,22 +62,21 @@ public class MeetList extends BaseActivity {
 	@Override
 	public void init() {
 		gridView = (GridView) findViewById(R.id.gridview);
-		
+
 		/*
 		 * 轮询的服务
 		 */
-		Intent intent = new Intent(this,SystemService.class);
+		Intent intent = new Intent(this, SystemService.class);
 		startService(intent);
-		
+
 		/*
 		 * 开启推送服务
 		 */
-//        ServiceManager serviceManager = new ServiceManager(this);
-//        serviceManager.startService();
-        
-		
+		//        ServiceManager serviceManager = new ServiceManager(this);
+		//        serviceManager.startService();
+
 	}
-	
+
 	@Override
 	protected void onResume() {
 		super.onResume();
@@ -87,11 +86,11 @@ public class MeetList extends BaseActivity {
 	/**
 	 * 显示会议列表
 	 */
-	public void showMeetInfo(){
+	public void showMeetInfo() {
 		gridView.setAdapter(new MyGridViewAdapter(this));
 	}
-	
-	Handler handler = new Handler(){
+
+	Handler handler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
 			super.handleMessage(msg);
@@ -102,9 +101,9 @@ public class MeetList extends BaseActivity {
 				break;
 			case UPDATE_ONE:
 				meetIdCont++;
-				Constants.Logleo("update_one :"+meetIdCont);
-				
-				if(meetIdCont == meetidList.size()){
+				Constants.Loglj("update_one :" + meetIdCont);
+
+				if (meetIdCont == meetidList.size()) {
 					dismissPD();
 					showMeetInfo();
 				}
@@ -117,26 +116,26 @@ public class MeetList extends BaseActivity {
 			}
 		}
 	};
-	
+
 	private List<String> meetidList;
 	/**
 	 * 保存过的会议ID数目
 	 */
 	private int meetIdCont = 0;
-	
+
 	/**
 	 * 手动更新会议信息
 	 */
 	private void updateMess() {
 		showPD("正在检查更新，请稍后....");
-		
+
 		/*
-		 * 在本地查找最近一条会议信息的发布时间	，第一次是null
+		 * 在本地查找最近一条会议信息的发布时间 ，第一次是null
 		 */
 		String localLastDate = dbUtil.getLastPublishDate();
-		Constants.Logleo("localLastDate:"+localLastDate);
-		if(localLastDate==null){
-			localLastDate="0";
+		Constants.Loglj("localLastDate:" + localLastDate);
+		if (localLastDate == null) {
+			localLastDate = "0";
 		}
 		//将这个时间发送至服务器，并接收返回的流数据
 		MeetIdListRequest idsReq = new MeetIdListRequest(localLastDate);
@@ -165,9 +164,9 @@ public class MeetList extends BaseActivity {
 	 * 更新会议数据
 	 */
 	protected void updateMeetMessages() {
-		Constants.Logleo(""+meetidList);
-		
-		for(String meetid:meetidList){	
+		Constants.Loglj("" + meetidList);
+
+		for (String meetid : meetidList) {
 			MeetRequest meetReq = new MeetRequest(meetid);
 			NetClient.execute(meetReq, new ResponseListener() {
 				@Override

@@ -20,58 +20,61 @@ import org.apache.http.protocol.HTTP;
 
 /**
  * 具体的联网动作
- * leo 2013-1-4
+ * 
+ * @author lijian
+ * 
  */
 public class NetClient {
-	
+
 	/**
 	 * 异步请求
+	 * 
 	 * @param helper
 	 * @param listener
 	 */
-	public static void execute(final NetHelper helper,final BaseBeanListener listener){
-		new Thread(){
+	public static void execute(final NetHelper helper, final BaseBeanListener listener) {
+		new Thread() {
 			@Override
 			public void run() {
 				BaseBean bean = sendReqSyn(helper);
-				if(!helper.isHaveError){
+				if (!helper.isHaveError) {
 					listener.dealResult(bean);
 				}
 			}
 		}.start();
 	}
-	
+
 	/**
 	 * 发送同步请求
+	 * 
 	 * @param helper
 	 */
-	public static BaseBean sendReqSyn(NetHelper helper){
+	public static BaseBean sendReqSyn(NetHelper helper) {
 		try {
 			HttpClient client = getClient();
 			HttpParams params = client.getParams();
 			params.setParameter(CoreConnectionPNames.CONNECTION_TIMEOUT, 6000);
 			params.setParameter(CoreConnectionPNames.SO_TIMEOUT, 6000);
-			
+
 			HttpPost post = new HttpPost(helper.getUrl());
 			HttpEntity httpEntiry = new UrlEncodedFormEntity(helper.getNameValuePairList(), HTTP.UTF_8);
 			post.setEntity(httpEntiry);
-				
-			Constants.Logleo("url:"+post.getURI());
+
+			Constants.Loglj("url:" + post.getURI());
 			HttpResponse response = client.execute(post);
-			
+
 			int statusCode = response.getStatusLine().getStatusCode();
-//			System.out.println("return code :" + statusCode);
+			//			System.out.println("return code :" + statusCode);
 			if (statusCode == 200) {
-				helper.parseResult(response );
-			}else{
-				helper.dealNetErr(statusCode, "网络错误："+statusCode);
+				helper.parseResult(response);
+			} else {
+				helper.dealNetErr(statusCode, "网络错误：" + statusCode);
 			}
 		} catch (ClientProtocolException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
-			if (e instanceof SocketTimeoutException
-					|| e instanceof ConnectTimeoutException) {// 联网超时（网络层错误）
+			if (e instanceof SocketTimeoutException || e instanceof ConnectTimeoutException) {// 联网超时（网络层错误）
 				helper.dealNetErr(Constants.TIME_OUT, "联网超时,请检查网络！");
 			} else if (e instanceof HttpHostConnectException) {// 网络连接失败，请检查网络
 				helper.dealNetErr(Constants.TIME_OUT, "网络连接失败，请检查网络！");
@@ -82,7 +85,6 @@ public class NetClient {
 		return helper.getBean();
 	}
 
-	
 	private static HttpClient getClient() {
 		///
 		return new DefaultHttpClient();

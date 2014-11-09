@@ -150,7 +150,7 @@ public class DownloadTask {
 	 */
 	private void getDownloadFileInfo(HttpClient httpClient) throws IOException,
 			ClientProtocolException, Exception {
-		Constants.Logleo("url:"+url);
+		Constants.Loglj("url:"+url);
 		HttpHead httpHead = new HttpHead(url);    //3gwap  3gnet 
 		
 		HttpResponse response = httpClient.execute(httpHead);
@@ -160,7 +160,7 @@ public class DownloadTask {
 		if(statusCode != 200) throw new Exception("资源不存在!");
 		if(getDebug()){
 			for(Header header : response.getAllHeaders()){
-				Constants.Logleo(header.getName()+":"+header.getValue());
+				Constants.Loglj(header.getName()+":"+header.getValue());
 			}
 		}
 		Header[] headers = response.getHeaders("Content-Length");

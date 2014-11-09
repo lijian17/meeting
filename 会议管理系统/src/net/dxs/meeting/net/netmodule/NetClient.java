@@ -53,7 +53,7 @@ public class NetClient {
 				HttpEntity httpEntiry = new UrlEncodedFormEntity(req.getStr_Params(), HTTP.UTF_8);
 				post.setEntity(httpEntiry);
 				
-			Constants.Logleo("url:"+post.getURI());
+			Constants.Loglj("url:"+post.getURI());
 			HttpResponse response = client.execute(post);
 			
 			int statusCode = response.getStatusLine().getStatusCode();

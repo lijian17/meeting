@@ -52,7 +52,7 @@ public class MeetDetail extends BaseActivity {
 		btn_left.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(MeetDetail.this,MeetList.class);
+				Intent intent = new Intent(MeetDetail.this,MeetListActivity.class);
 				startActivity(intent);
 				finish();
 			}

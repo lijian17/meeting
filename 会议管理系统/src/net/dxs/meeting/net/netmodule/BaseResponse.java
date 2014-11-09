@@ -72,7 +72,7 @@ public abstract class BaseResponse {
 	 */
 	public void dealNetErr(int errorCode, String errorDes) {
 		isHaveError = true;
-		Constants.Logleo("========"+errorDes+"=====");
+		Constants.Loglj("========"+errorDes+"=====");
 
 		Message msg = new Message();
 		msg.what = Constants.NET_ERROR;
